@@ -1,0 +1,513 @@
+/* main.css */
+
+/* Базовые стили */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif; /* Современный шрифт */}
+body {
+  background-color: #000000; /* Очень тёмный фон */
+  color: #ffffff;
+  height: 100vh;
+}
+
+/* СКРЫТИЕ СКРОЛЛОВ */
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+html {
+  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none;     /* Firefox */
+}
+
+/* NAVBAR (fixed top) */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 50px;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 100px;
+  padding: 0 20px;
+  z-index: 1000;
+  border-bottom: 2px solid #333a40; /* тёмный оттенок */
+}
+.navbar .search {
+  width: 40%;
+  display: flex;
+  align-items: center;
+}
+.navbar .search img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+.search_input {
+  padding: 5px 15px;
+  font-weight: 600;
+  border: none;
+  width: 30%;
+  height: 35px;
+  min-width: 20px;
+  border-radius: 20px;
+  outline: none;
+  background-color: #ffffff; /* более яркий оттенок */
+  color: #000000;
+  margin: 10px;
+}
+.navbar .menu {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap:160px;
+}
+.navbar .menu a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 14px;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+
+.navbar .menu a:hover {
+  color: white; /* насыщенный голубой при hover */
+  text-shadow: 0 0 20px white; /* эффект свечения */
+  transition: text-shadow 0.2s;
+}
+
+
+/* FOOTER (fixed bottom) */
+.footer {
+  border-top: 2px solid #333a40; /* тёмный оттенок */
+
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 80px;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  z-index: 1000;
+}
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.footer-left img {
+  width: 65px;
+  height: 65px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+.footer-center {
+  position: absolute;   /* внутреннее абсолютное позиционирование */
+  left: 50%;            /* прижаться к середине родителя */
+  top: 50%;             /* отцентрировать по вертикали (высота родителя 80px) */
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: 40%;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.controls button {
+  background: none;
+  border: none;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  width: 40px;
+  height:40px;
+  font-weight: bolder;
+  margin: -10px;
+  font-size: 20px;
+ 
+}
+.controls button:hover {
+  color: #67dbf2;
+  font-size: 21px;
+  transition: font-size 0.4s, color 0.9s;
+}
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  font-size: 12px;
+}
+.progress-container input[type="range"] {
+ 
+  height: 3px;
+  border: none;
+  flex: 1;
+  cursor: pointer;
+  accent-color: #ffffff; /* в современных браузерах цвет ползунка */
+}
+.footer-details{
+  line-height: 1.3; /* Значение 1.5 увеличит расстояние между строками */
+}
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 12px;
+}
+.footer-song-title{
+  font-size: 20px;
+  font-weight: 600;
+}
+.footer-song-artist{
+  font-size: 14px;
+  color: #aaa;
+}
+.footer-right input[type="range"] {
+  border: none;
+  width: 150px;
+  height: 5px;
+  accent-color: #ffffff;
+}
+
+/* ОСНОВНОЙ КОНТЕЙНЕР (между navbar и footer) */
+.container {
+  position: absolute;
+  top: 50px; /* navbar height */
+  bottom: 80px; /* footer height */
+  left: 0;
+  right: 0;
+  display: flex;
+  overflow: hidden;
+}
+
+
+/* ЛЕВАЯ ПАНЕЛЬ (Collection) */
+.collection-panel {
+  background-color: #181818;
+  width: 250px;
+  min-width: 235px;
+  max-width: 800px;
+  overflow-y: auto;
+  margin: 3px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Добавляем область для хвата справа */
+.collection-panel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 100%;
+  cursor: ew-resize; /* Курсор для изменения ширины */
+  z-index: 10;
+}
+
+.collection-header {
+  background-color:#21252a;
+  padding: 15px;
+  margin: -10px;
+  height: 80px;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.collection-header h2 {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+}
+.playlist {
+  margin-bottom: 3px;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.playlist-small-inf{
+  display: flex;
+  text-align: left;
+}
+.playlist:hover {
+  background-color: #3B3F42;
+}
+.playlist img {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  margin-right: 5px;
+  object-fit: cover;
+}
+.playlist .title {
+  font-size: 13px;
+  font-weight: bold;
+}
+.playlist .info {
+  font-size: 14px;
+  color: #aaa;
+  margin-left: 2px;
+  display: block;
+}
+.plus-but{
+    background: none;
+    margin: 5px;
+    width: 35px;
+    height: 35px;
+    border-radius: 100px;
+    border: 3px solid #61dafb;
+    color: white;
+    font-weight: 900;
+    font-size: 15px;
+    cursor:pointer;
+}
+/* ЦЕНТРАЛЬНАЯ ПАНЕЛЬ (Song Info) */
+.song-info-panel {
+  margin: 3px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  background-color: #181818;
+  min-width: 200px;
+  width: 300px;
+  max-width: 800px;
+
+  overflow-y: auto;
+  padding: 20px;
+  flex-shrink: 0;
+  overflow-y: auto;
+  
+}
+.song-info-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  background-color: #21252a;
+  margin: -20px;
+  padding: 10px 20px ;
+  margin-bottom: 20px;
+} 
+
+.song-info-panel-header  h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight:bold;
+  color: white;
+}
+.song-cover {
+  width: 100% ;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+.artist-extra-info {
+  background-color: #2A2D31;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+.artist-extra-info h4 {
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+.artist-extra-info p {
+  font-size: 12px;
+  line-height: 1.3;
+  color: #bbb;
+}
+.song-cover-artist
+{
+  width: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+.song-details-block h3 {
+  font-size: 20px;
+  color: #fff;
+}
+.song-details-block p {
+  font-size: 16px;
+  color: #ccc;
+  line-height: 1.4;
+}
+.song-extra-info {
+  background-color: #2A2D31;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+.song-extra-info h4 {
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+.song-extra-info p {
+  font-size: 12px;
+  line-height: 1.3;
+  color: #bbb;
+}
+
+/* ПРАВАЯ ПАНЕЛЬ (Dynamic Content) */
+.dynamic-content {
+  margin: 3px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  flex: 1;
+  overflow-y:hidden;
+  border-radius: 5px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Заглушка onerror */
+img[onerror] {
+  background-color: #ffffff;
+  display: block;
+}
+.input-error input,
+.input-error textarea {
+  border: 2px solid red;
+}
+
+.error-message {
+  color: red;
+}
+
+.success-message {
+  color: green;
+}
+
+.playlist-cover {
+  width: 50px;
+  height: 50px;
+}
+
+.playlist-cover-lg {
+  width: 200px;
+  height: 200px;
+}
+
+.playlist {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.playlist:hover {
+  background-color: #f0f0f0;
+}
+
+.details {
+  margin-left: 10px;
+}
+
+.fav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+.small-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover; /* Обеспечивает заполнение области без искажения */
+    border-radius: 4px; /* Опционально: добавляет скругление углов */
+}
+.small-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.large-image {
+    width: 150px; /* Пример большего размера */
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+/* main.css */
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#progress-bar {
+    flex: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 5px;
+    background: #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: background 0.3s;
+}
+
+#progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #555;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+#progress-bar::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: #555;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+#progress-bar:hover {
+    background: #bbb;
+}
+
+#progress-bar::-webkit-slider-thumb:hover {
+    background: #333;
+}
+
+#progress-bar::-moz-range-thumb:hover {
+    background: #333;
+}
+
+#current-time, #total-time {
+    width: 50px;
+    text-align: center;
+}

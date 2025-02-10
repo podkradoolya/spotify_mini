@@ -1,0 +1,157 @@
+/* playlist.css */
+
+/* Общая обёртка для содержимого плейлиста */
+.playlist-ui {
+  color: #fff;
+  background-color: #181818;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  
+}
+
+/* Шапка (обложка + описание) */
+.playlist-header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 20px;
+  height: 350px;
+  background-color: #61dafb;
+  background: linear-gradient(to bottom, #61dafb, #000000); /* Градиент от серого к белому */
+  padding: 20px;
+  margin: -20px;
+  margin-bottom: 20px;
+}
+
+/* Обложка плейлиста */
+.playlist-cover {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Блок с названием плейлиста и описанием */
+.playlist-info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Заголовок плейлиста */
+.playlist-title {
+  font-size: 46px;
+  margin: 0 0 8px 0;
+  
+}
+
+/* Подзаголовок или дополнительная информация */
+.playlist-subinfo {
+  font-size: 14px;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* Таблица треков */
+.playlist-table table {
+
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.playlist-table thead th {
+  text-align: left;
+  color: #aaa;
+  height: 40px;
+  border-bottom: 1px solid #444;
+  font-size: 12px;
+  padding-bottom: 8px;
+  
+}
+
+.playlist-table tbody tr.playlist-row {
+  height: 50px;
+  transition: background-color 0.2s;
+}
+
+.playlist-table tbody tr.playlist-row:hover {
+  background-color: #2F3236;
+}
+
+.playlist-table td {
+  height: 40px;
+  padding: 6px;
+  vertical-align: middle;
+  font-size: 13px;
+  color: #ccc;
+  
+}
+
+/* Колонка с номером */
+.th-number,
+.td-number {
+  width: 30px;
+}
+
+/* Колонка с избранным */
+.th-fav,
+.td-fav {
+  width: 50px;
+  text-align: center;
+}
+
+/* Обложка трека (в таблице) */
+.track-cover {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Название трека */
+.track-name {
+  font-weight: bold;
+  font-size: 14px;
+  color: #fff; /* Чуть ярче, чем у автора */
+}
+
+/* Имя автора (мини) */
+.track-creator-sm {
+  font-size: 13px;
+  color: #ccc;
+}
+
+/* Кнопка "лайк" (сердечко) */
+.fav-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  transition: color 0.2s;
+}
+
+.fav-btn:hover {
+  color: #ffffff;
+}
+
+
+
+.group-info {
+  color: #ccc;
+  font-size: 14px;
+}
+
+.social-links a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.social-links a:hover {
+  text-decoration: underline;
+}

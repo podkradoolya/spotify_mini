@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Вход</title>
+  <link rel="stylesheet" href="/css/reg.css" />
+</head>
+<body>
+<div class="container">
+  <div class="form-container">
+    <h1 class="title">Логин</h1>
+
+    <div id="message" class="message"></div>
+
+    <!-- Форма логина на /auth/login (POST) -->
+    <form class="form-box" action="/auth/login" method="POST">
+      <div class="input-group" id="email-group">
+        <label for="email">Email</label>
+        <input
+                type="email"
+                id="email"
+                name="username"
+                placeholder="Введите ваш email"
+                required
+        />
+      </div>
+      <div class="input-group" id="password-group">
+        <label for="password">Пароль</label>
+        <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Введите ваш пароль"
+                required
+        />
+      </div>
+      <button type="submit" class="btn-submit">Войти</button>
+      <p class="switch-page">
+        Нет аккаунта?
+        <a href="/auth/register">Зарегистрироваться</a>
+      </p>
+    </form>
+  </div>
+  <div class="image-container"></div>
+</div>
+
+<script src="/js/registration.js"></script>
+<script>
+  displayLoginMessages();
+</script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Music App</title>
+  <!-- Подключаем стили -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/home.css" />
+  <link rel="stylesheet" href="/css/playlist.css" />
+  <link rel="stylesheet" href="/css/svoe.css" />
+</head>
+<body>
+
+<div class="navbar">
+  <div class="search">
+    <img
+            src="/resources/a.png"
+            alt="App logo"
+            id="app-logo"
+            style="cursor: pointer;"
+    /><b>sigma</b>
+    <div class="app-menu" id="app-menu">
+      <button onclick="showHome()">Home</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+  <div class="menu">
+    <a href="#" onclick="showHome()">Home</a>
+    <a href="#" onclick="openAllTracksModal()">Search</a> <!-- Обновлено -->
+    <a href="#" onclick="openAllTracksModal()"></a> <!-- Обновлено -->
+  </div>
+</div>
+
+<!-- Основной контейнер -->
+<div class="container">
+
+  <!-- Левая панель (Collection) -->
+  <div class="collection-panel resizable">
+    <div class="collection-header" style="display: flex; justify-content: space-between;">
+      <h2>Collection</h2>
+      <!-- Нажимаем -> открывается модальное окно -->
+      <button onclick="openPlaylistModal()" class="plus-but">+</button>
+    </div>
+    <!-- Плейлисты грузим в этот контейнер -->
+    <div id="playlists-container"></div>
+  </div>
+
+  <!-- Центральная панель (Song Info) -->
+  <div class="song-info-panel resizable">
+    <div class="song-info-panel-header">
+      <h2>About Artist</h2>
+    </div>
+    <img
+            id="song-cover"
+            class="song-cover"
+            src="/resources/img.png"
+            alt="Song cover"
+    />
+    <div class="song-details-block">
+      <h3 id="song-title">No Song</h3>
+      <p id="song-artist">No Artist</p>
+    </div>
+  </div>
+
+  <!-- Правая панель (Dynamic Content) -->
+  <div class="dynamic-content resizable" id="dynamic-content">
+    <!-- При клике на плейлист будет показываться содержимое -->
+  </div>
+
+  <!-- Модальное окно для создания плейлиста -->
+  <div id="createPlaylistModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" onclick="closePlaylistModal()">&times;</span>
+      <h2>Create New Playlist</h2>
+      <input type="text" id="playlist-name" placeholder="Playlist Name" required />
+      <textarea id="playlist-desc" placeholder="Description (optional)"></textarea>
+      <div class="modal-buttons">
+        <button onclick="closePlaylistModal()">Cancel</button>
+        <button onclick="createPlaylist()">Create</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно для поиска -->
+  <div id="searchModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeSearchModal()">&times;</span>
+      <h2>Поиск песен</h2>
+      <input id="modal-search-input" class="modal-search-input" type="text" placeholder="Введите название песни или исполнителя">
+      <div id="search-results">
+        <!-- Результаты поиска будут загружены сюда -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно для отображения всех песен -->
+  <div id="allTracksModal" class="alltrackmodal">
+    <div class="alltrackmodal-content">
+      <span class="close-button" onclick="closeAllTracksModal()">&times;</span>
+      <h2>Search</h2>
+      <input type="text" id="all-tracks-search-input" class="alltrackmodal-search-input" placeholder="Поиск по названию или артисту" oninput="filterTracks()">
+      <div id="all-tracks-container" class="tracks-container">
+        <!-- Список песен будет загружен сюда -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Оверлей -->
+  <div id="overlay" class="overlay"></div>
+</div>
+
+<!-- Плеер -->
+<!-- Плеер -->
+<!-- Плеер -->
+<div class="footer">
+  <div class="footer-left">
+    <img
+            id="footer-image"
+            src="/images/img.png"
+            alt="Song thumbnail"
+            class="small-image"
+    />
+    <div class="footer-details">
+      <p class="footer-song-title" id="footer-song-title">Song</p>
+      <p class="footer-song-artist" id="footer-song-artist">Artist name</p>
+    </div>
+  </div>
+
+  <div class="footer-center">
+    <div class="controls">
+      <button onclick="previousSong()">&#9664;&#9664;</button>
+      <button id="play-pause-btn" onclick="togglePlayPause()">&#9658;</button>
+      <button onclick="nextSong()">&#9654;&#9654;</button>
+    </div>
+    <div class="progress-container">
+      <span id="current-time">0:00</span>
+      <input type="range" id="progress-bar" min="0" max="100" value="0" />
+      <span id="total-time">0:00</span>
+    </div>
+  </div>
+
+  <div class="footer-right">
+    <div>
+      <span>Volume</span>
+      <input type="range" id="volume" min="0" max="100" value="80" oninput="changeVolume(this.value)">
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Аудиоэлемент -->
+<audio id="audio-player"></audio>
+
+<!-- Подключаем JS -->
+<script src="/js/main.js"></script>
+<script src="/js/svoe.js"></script>
+<script src="/js/home.js"></script>
+<script src="/js/playlist.js"></script>
+<script src="/js/allTracks.js"></script>
+</body>
+</html>
